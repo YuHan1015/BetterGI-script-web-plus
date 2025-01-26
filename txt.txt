@@ -1,0 +1,32 @@
+项目初始化
+mkdir backend && cd backend
+npm init -y
+npm install express @octokit/rest sqlite3 cors dotenv
+
+项目初始化
+npm create vue@latest
+# 选择必要配置项
+cd frontend
+npm install axios element-plus @element-plus/icons-vue
+
+开发代理设置（vite.config.js）
+export default defineConfig({
+  server: {
+    proxy: {
+      '/api': {
+        target: 'http://localhost:3000',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, '')
+      }
+    }
+  }
+})
+
+环境变量示例
+# 创建Procfile
+web: node app.js
+
+# 部署命令
+heroku login
+heroku create
+git push heroku main
