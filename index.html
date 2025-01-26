@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BetterGI 脚本仓库</title>
+  
+  <!-- 加载Vue 3核心库 -->
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  
+  <!-- 加载Element Plus组件库 -->
+  <link rel="stylesheet" href="https://unpkg.com/element-plus/dist/index.css">
+  <script src="https://unpkg.com/element-plus"></script>
+  
+  <!-- 加载axios -->
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+  <div id="app">
+    <script type="module">
+      // 配置Element Plus国际化
+      const zhLocale = ElementPlus.locales.zhCn
+      
+      // 创建Vue应用
+      const { createApp } = Vue
+      const app = createApp({
+        template: `
+          <el-config-provider :locale="zhLocale">
+            <router-view />
+          </el-config-provider>
+        `,
+        data() {
+          return {
+            zhLocale
+          }
+        }
+      })
+
+      // 注册Element Plus组件
+      app.use(ElementPlus)
+      
+      // 挂载应用
+      app.mount('#app')
+    </script>
+  </div>
+</body>
+</html>
